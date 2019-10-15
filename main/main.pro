@@ -21,14 +21,17 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     openimg.cpp \
-    save_image.cpp
+    save_image.cpp \
+    dialog.cpp
 
 HEADERS += \
     all.h \
-    mainwindow.h
+    mainwindow.h \
+    dialog.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    dialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -26,8 +26,11 @@ private slots:
     void fun1();
     void fun2();
     //void getrgbclicked2();
+    void on_actionSize_triggered();
+
 private:
     Ui::MainWindow *ui;
+    QDialog dia;
     QLabel *label;
     QLabel *label_2;
 };

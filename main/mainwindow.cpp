@@ -29,6 +29,9 @@ void MainWindow::on_actionopen_triggered(){
 void MainWindow::on_actionsave_as_triggered(){
     save_image();
 }
+void MainWindow::on_actionSize_triggered(){//No matching signal for on_actionSize_triggered()
+    dia.show();
+}
 int doubleToInt(double d){
     double intPart=floor(d);
     if((d-intPart)>=(double)0.5)
@@ -45,3 +48,5 @@ void MainWindow::slotslider_DoubleSpinBox(){
 MainWindow::~MainWindow(){
     delete ui;
 }
+
+

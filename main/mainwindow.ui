@@ -377,6 +377,16 @@
     <string>size</string>
    </property>
   </action>
+  <action name="actionAsf">
+   <property name="text">
+    <string>asf</string>
+   </property>
+  </action>
+  <action name="actionJ">
+   <property name="text">
+    <string>j'</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
