@@ -14,38 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>141</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="mouseTracking">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>openimage(ctrl+o)</string>
-    </property>
-    <property name="shortcut">
-     <string>Ctrl+O</string>
-    </property>
-   </widget>
    <widget class="QScrollArea" name="scrollArea">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>90</y>
+      <y>10</y>
       <width>351</width>
-      <height>381</height>
+      <height>461</height>
      </rect>
     </property>
     <property name="mouseTracking">
@@ -60,16 +35,16 @@
        <x>0</x>
        <y>0</y>
        <width>349</width>
-       <height>379</height>
+       <height>459</height>
       </rect>
      </property>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>-1</x>
-        <y>-1</y>
+        <x>0</x>
+        <y>0</y>
         <width>351</width>
-        <height>381</height>
+        <height>461</height>
        </rect>
       </property>
       <property name="text">
@@ -78,23 +53,13 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QDoubleSpinBox" name="doubleSpinBox">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>40</y>
-      <width>58</width>
-      <height>23</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QScrollArea" name="scrollArea_2">
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>90</y>
+      <y>10</y>
       <width>351</width>
-      <height>381</height>
+      <height>461</height>
      </rect>
     </property>
     <property name="mouseTracking">
@@ -109,7 +74,7 @@
        <x>0</x>
        <y>0</y>
        <width>349</width>
-       <height>379</height>
+       <height>459</height>
       </rect>
      </property>
      <widget class="QLabel" name="label_2">
@@ -118,7 +83,7 @@
         <x>-1</x>
         <y>-1</y>
         <width>351</width>
-        <height>381</height>
+        <height>461</height>
        </rect>
       </property>
       <property name="text">
@@ -126,190 +91,6 @@
       </property>
      </widget>
     </widget>
-   </widget>
-   <widget class="QSlider" name="horizontalSlider">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>40</y>
-      <width>160</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="text">
-     <string>transform(enter)</string>
-    </property>
-    <property name="shortcut">
-     <string>Return</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>40</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="text">
-     <string>Zoom ratio</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>400</x>
-      <y>70</y>
-      <width>201</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="text">
-     <string>save changed image(ctrl+s)</string>
-    </property>
-    <property name="shortcut">
-     <string>Ctrl+S</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_4">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>10</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="text">
-     <string>getrgb1</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>10</y>
-      <width>21</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="text">
-     <string>x=</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>40</y>
-      <width>21</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="text">
-     <string>y=</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>10</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>40</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_5">
-    <property name="geometry">
-     <rect>
-      <x>570</x>
-      <y>40</y>
-      <width>80</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Consolas</family>
-      <italic>true</italic>
-     </font>
-    </property>
-    <property name="text">
-     <string>getrgb2</string>
-    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -353,8 +134,16 @@
     </widget>
     <addaction name="menuGeometric_transformation"/>
    </widget>
+   <widget class="QMenu" name="menuGetrgb">
+    <property name="title">
+     <string>getrgb</string>
+    </property>
+    <addaction name="actionGet_Original_image_rgb"/>
+    <addaction name="actionGet_transformed_image_rgb"/>
+   </widget>
    <addaction name="menufile"/>
    <addaction name="menuTransform"/>
+   <addaction name="menuGetrgb"/>
   </widget>
   <action name="actionopen">
    <property name="text">
@@ -377,14 +166,14 @@
     <string>size</string>
    </property>
   </action>
-  <action name="actionAsf">
+  <action name="actionGet_Original_image_rgb">
    <property name="text">
-    <string>asf</string>
+    <string>get original_image rgb</string>
    </property>
   </action>
-  <action name="actionJ">
+  <action name="actionGet_transformed_image_rgb">
    <property name="text">
-    <string>j'</string>
+    <string>get transformed_image rgb</string>
    </property>
   </action>
  </widget>

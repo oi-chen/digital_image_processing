@@ -1,13 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include<QMainWindow>
 #include<all.h>
+#include<dialog.h>
+#include<dialog_getrgb.h>
 QT_BEGIN_NAMESPACE
 namespace Ui{
 class MainWindow;
 }
 QT_END_NAMESPACE
-
 class MainWindow:public QMainWindow{
     Q_OBJECT
 public:
@@ -16,38 +16,23 @@ public:
     static QImage save();
 private slots:
     void OpenImg();
-    void change_size();
+    void change_size(double);
     void save_image();
-    void slotDoubleSpinbox_slider();
-    void slotslider_DoubleSpinBox();
     void on_actionopen_triggered();
     void on_actionsave_as_triggered();
-    void getrgbclicked(Mat,int);
-    void fun1();
-    void fun2();
-    //void getrgbclicked2();
+    void getrgbclicked(int,int,bool);
+    //void fun1();
+    //void fun2();
     void on_actionSize_triggered();
+    void on_actionGet_Original_image_rgb_triggered();
+
+    void on_actionGet_transformed_image_rgb_triggered();
 
 private:
     Ui::MainWindow *ui;
-    QDialog dia;
     QLabel *label;
     QLabel *label_2;
+    Dialog *dia;
+    Dialog_getrgb *getrgb;
 };
-
-/*
-QT_BEGIN_NAMESPACE
-
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
-class MainWindow : public QMainWindow{
-    Q_OBJECT
-public:
-    MainWindow(QWidget *parent=0);
-    ~MainWindow();
-private:
-    void open();
-    QAction *openAction;
-};
-*/
 #endif // MAINWINDOW_H

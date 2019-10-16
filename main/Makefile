@@ -53,16 +53,24 @@ SOURCES       = change_size.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		openimg.cpp \
-		save_image.cpp qrc_main.cpp \
-		moc_mainwindow.cpp
+		save_image.cpp \
+		dialog.cpp \
+		dialog_getrgb.cpp qrc_main.cpp \
+		moc_mainwindow.cpp \
+		moc_dialog.cpp \
+		moc_dialog_getrgb.cpp
 OBJECTS       = change_size.o \
 		getrgb.o \
 		main.o \
 		mainwindow.o \
 		openimg.o \
 		save_image.o \
+		dialog.o \
+		dialog_getrgb.o \
 		qrc_main.o \
-		moc_mainwindow.o
+		moc_mainwindow.o \
+		moc_dialog.o \
+		moc_dialog_getrgb.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -124,12 +132,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		main.pro all.h \
-		mainwindow.h change_size.cpp \
+		mainwindow.h \
+		dialog.h \
+		dialog_getrgb.h change_size.cpp \
 		getrgb.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		openimg.cpp \
-		save_image.cpp
+		save_image.cpp \
+		dialog.cpp \
+		dialog_getrgb.cpp
 QMAKE_TARGET  = main
 DESTDIR       = 
 TARGET        = main
@@ -138,7 +150,7 @@ TARGET        = main
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: main.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -287,9 +299,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents main.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents all.h mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents change_size.cpp getrgb.cpp main.cpp mainwindow.cpp openimg.cpp save_image.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents all.h mainwindow.h dialog.h dialog_getrgb.h $(DISTDIR)/
+	$(COPY_FILE) --parents change_size.cpp getrgb.cpp main.cpp mainwindow.cpp openimg.cpp save_image.cpp dialog.cpp dialog_getrgb.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.ui dialog.ui dialog_getrgb.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -321,22 +333,42 @@ qrc_main.cpp: main.qrc \
 		icon_resource/open.png
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name main main.qrc -o qrc_main.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_dialog.cpp moc_dialog_getrgb.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_dialog.cpp moc_dialog_getrgb.cpp
 moc_mainwindow.cpp: all.h \
+		dialog.h \
+		dialog_getrgb.h \
 		mainwindow.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
+moc_dialog.cpp: all.h \
+		dialog.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialog.h -o moc_dialog.cpp
+
+moc_dialog_getrgb.cpp: all.h \
+		dialog_getrgb.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialog_getrgb.h -o moc_dialog_getrgb.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h
 ui_mainwindow.h: mainwindow.ui \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic mainwindow.ui -o ui_mainwindow.h
+
+ui_dialog.h: dialog.ui \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic dialog.ui -o ui_dialog.h
+
+ui_dialog_getrgb.h: dialog_getrgb.ui \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic dialog_getrgb.ui -o ui_dialog_getrgb.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -350,37 +382,65 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 
 change_size.o: change_size.cpp mainwindow.h \
 		all.h \
+		dialog.h \
+		dialog_getrgb.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o change_size.o change_size.cpp
 
 getrgb.o: getrgb.cpp mainwindow.h \
 		all.h \
+		dialog.h \
+		dialog_getrgb.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o getrgb.o getrgb.cpp
 
 main.o: main.cpp mainwindow.h \
-		all.h
+		all.h \
+		dialog.h \
+		dialog_getrgb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
 		all.h \
+		dialog.h \
+		dialog_getrgb.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 openimg.o: openimg.cpp mainwindow.h \
 		all.h \
+		dialog.h \
+		dialog_getrgb.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o openimg.o openimg.cpp
 
 save_image.o: save_image.cpp mainwindow.h \
-		all.h
+		all.h \
+		dialog.h \
+		dialog_getrgb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o save_image.o save_image.cpp
+
+dialog.o: dialog.cpp dialog.h \
+		all.h \
+		ui_dialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog.o dialog.cpp
+
+dialog_getrgb.o: dialog_getrgb.cpp all.h \
+		dialog_getrgb.h \
+		ui_dialog_getrgb.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_getrgb.o dialog_getrgb.cpp
 
 qrc_main.o: qrc_main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_main.o qrc_main.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_dialog.o: moc_dialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog.o moc_dialog.cpp
+
+moc_dialog_getrgb.o: moc_dialog_getrgb.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_getrgb.o moc_dialog_getrgb.cpp
 
 ####### Install
 

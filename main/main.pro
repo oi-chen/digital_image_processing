@@ -22,16 +22,19 @@ SOURCES += \
     mainwindow.cpp \
     openimg.cpp \
     save_image.cpp \
-    dialog.cpp
+    dialog.cpp \
+    dialog_getrgb.cpp
 
 HEADERS += \
     all.h \
     mainwindow.h \
-    dialog.h
+    dialog.h \
+    dialog_getrgb.h
 
 FORMS += \
     mainwindow.ui \
-    dialog.ui
+    dialog.ui \
+    dialog_getrgb.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -54,3 +57,6 @@ TEMPLATE = app
 
 RESOURCES += \
     main.qrc
+
+#??ui_xxx.h????????????#include<ui_xxx.h>???????????????????ui_xxx.h
+UI_DIR=.

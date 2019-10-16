@@ -1,27 +1,18 @@
 #include<mainwindow.h>
+#include<dialog.h>
 #include<ui_mainwindow.h>
 Mat image,image_changed;
 QImage img,img2;
 QString filename;
+bool flag;
 MainWindow::MainWindow(QWidget *parent):
     QMainWindow(parent),
     ui(new Ui::MainWindow){
     ui->setupUi(this);
-    connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(OpenImg()));
-    connect(ui->doubleSpinBox, SIGNAL(valueChanged(double)), this, SLOT(slotDoubleSpinbox_slider()));
-    connect(ui->horizontalSlider, SIGNAL(valueChanged(int)), this, SLOT(slotslider_DoubleSpinBox()));
-    connect(ui->pushButton_2,SIGNAL(clicked(bool)),this,SLOT(change_size()));
-    connect(ui->pushButton_3,SIGNAL(clicked(bool)),this,SLOT(save_image()));
-    connect(ui->pushButton_4,SIGNAL(clicked(bool)),this,SLOT(fun1()));
-    connect(ui->pushButton_5,SIGNAL(clicked(bool)),this,SLOT(fun2()));
-    ui->doubleSpinBox->setMinimum(0.10);
-    ui->doubleSpinBox->setMaximum(10.00);
-    ui->doubleSpinBox->setSingleStep(0.01);
-    ui->horizontalSlider->setMinimum(10);
-    ui->horizontalSlider->setMaximum(1000);
-    ui->horizontalSlider->setSingleStep(1);
-    ui->lineEdit->setValidator(new QIntValidator(ui->lineEdit));
-    ui->lineEdit_2->setValidator(new QIntValidator(ui->lineEdit_2));
+    dia=new Dialog;
+    getrgb=new Dialog_getrgb;
+    connect(dia,SIGNAL(sendsignal(double)),this,SLOT(change_size(double)));
+    connect(getrgb,SIGNAL(sendcoor(int,int,bool)),this,SLOT(getrgbclicked(int,int,bool)));
 }
 void MainWindow::on_actionopen_triggered(){
     OpenImg();
@@ -29,24 +20,32 @@ void MainWindow::on_actionopen_triggered(){
 void MainWindow::on_actionsave_as_triggered(){
     save_image();
 }
-void MainWindow::on_actionSize_triggered(){//No matching signal for on_actionSize_triggered()
-    dia.show();
+void MainWindow::on_actionSize_triggered(){
+    if((!img.width())&&(!img.height())){
+        QMessageBox::information(this,tr("Error"),tr("No image can be transformed"));
+        return;
+    }
+    dia->setWindowTitle("Select change magnification");
+    dia->show();
 }
-int doubleToInt(double d){
-    double intPart=floor(d);
-    if((d-intPart)>=(double)0.5)
-        return (int)(intPart+1);
-    else
-        return (int)intPart;
+void MainWindow::on_actionGet_Original_image_rgb_triggered(){
+    if(image.empty()){
+        QMessageBox::information(this,tr("Error"),tr("Can't find image"));
+        return;
+    }
+    flag=false;
+    getrgb->setWindowTitle("get original_image rgb");
+    getrgb->show();
 }
-void MainWindow::slotDoubleSpinbox_slider(){
-    ui->horizontalSlider->setValue(doubleToInt((ui->doubleSpinBox->value())*100));
-}
-void MainWindow::slotslider_DoubleSpinBox(){
-    ui->doubleSpinBox->setValue((double)(ui->horizontalSlider->value())/100);
+void MainWindow::on_actionGet_transformed_image_rgb_triggered(){
+    if(image_changed.empty()){
+        QMessageBox::information(this,tr("Error"),tr("Can't find image"));
+        return;
+    }
+    flag=true;
+    getrgb->setWindowTitle("get transformed_image rgb");
+    getrgb->show();
 }
 MainWindow::~MainWindow(){
     delete ui;
 }
-
-

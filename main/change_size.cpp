@@ -3,12 +3,12 @@
 extern Mat image,image_changed;
 extern QImage img,img2;
 extern QString filename;
-void MainWindow::change_size(){
+void MainWindow::change_size(double size_value){
     if((!img.width())&&(!img.height())){
         QMessageBox::information(this,tr("Error"),tr("No image can be transformed"));
         return;
     }
-    cv::resize(image,image_changed,Size(image.cols*ui->doubleSpinBox->value(),image.rows*ui->doubleSpinBox->value()),0,0,INTER_LINEAR);
+    cv::resize(image,image_changed,Size(image.cols*size_value,image.rows*size_value),0,0,INTER_LINEAR);
     int channel=image_changed.channels();//依据通道数不同选择转换为QImage方式  
     if(channel==3){
         cv::cvtColor(image_changed,image_changed,COLOR_BGR2RGB);//调整通道次序
@@ -23,7 +23,7 @@ void MainWindow::change_size(){
         img2=QImage(image_changed.cols,image_changed.rows,QImage::Format_Indexed8);
         uchar* matdata=image_changed.data;
         for(int row=0;row<image_changed.rows;row++){
-            uchar* rowdata=img2.scanLine( row );
+            uchar* rowdata=img2.scanLine(row);
             memcpy(rowdata,matdata,image.cols);
             matdata+=image.cols;
         }
