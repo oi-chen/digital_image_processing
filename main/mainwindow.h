@@ -21,13 +21,9 @@ private slots:
     void on_actionopen_triggered();
     void on_actionsave_as_triggered();
     void getrgbclicked(int,int,bool);
-    //void fun1();
-    //void fun2();
     void on_actionSize_triggered();
     void on_actionGet_Original_image_rgb_triggered();
-
     void on_actionGet_transformed_image_rgb_triggered();
-
 private:
     Ui::MainWindow *ui;
     QLabel *label;

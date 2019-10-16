@@ -13,9 +13,7 @@ signals:
     void sendcoor(int,int,bool);
 private slots:
     void on_buttonBox_accepted();
-
     void on_buttonBox_rejected();
-
 private:
     Ui::Dialog_getrgb *ui;
 };

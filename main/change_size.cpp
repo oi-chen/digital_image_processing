@@ -9,17 +9,15 @@ void MainWindow::change_size(double size_value){
         return;
     }
     cv::resize(image,image_changed,Size(image.cols*size_value,image.rows*size_value),0,0,INTER_LINEAR);
-    int channel=image_changed.channels();//渚濇嵁閫氶亾鏁颁笉鍚岄�夋嫨杞崲涓篞Image鏂瑰紡  
+    int channel=image.channels();//根据图像类型选择输出方式
     if(channel==3){
-        cv::cvtColor(image_changed,image_changed,COLOR_BGR2RGB);//璋冩暣閫氶亾娆″簭
+        cvtColor(image_changed,image_changed,COLOR_BGR2RGB);//opencv中mat类型颜色数据存储顺序为bgr
         img2=QImage(static_cast<uchar*>(image_changed.data),image_changed.cols,image_changed.rows,QImage::Format_RGB888);
     }
-    else if(channel==4){
-        //argb
+    else if(channel==4){//argb
         img2=QImage(static_cast<uchar*>(image_changed.data),image_changed.cols,image_changed.rows,QImage::Format_ARGB32);
     }
-    else{
-        //鍗曢�氶亾锛岀伆搴﹀浘
+    else{//灰度图像
         img2=QImage(image_changed.cols,image_changed.rows,QImage::Format_Indexed8);
         uchar* matdata=image_changed.data;
         for(int row=0;row<image_changed.rows;row++){
