@@ -55,7 +55,8 @@ SOURCES       = change_size.cpp \
 		openimg.cpp \
 		save_image.cpp \
 		dialog.cpp \
-		dialog_getrgb.cpp qrc_main.cpp \
+		dialog_getrgb.cpp \
+		get_histogram.cpp qrc_main.cpp \
 		moc_mainwindow.cpp \
 		moc_dialog.cpp \
 		moc_dialog_getrgb.cpp
@@ -67,6 +68,7 @@ OBJECTS       = change_size.o \
 		save_image.o \
 		dialog.o \
 		dialog_getrgb.o \
+		get_histogram.o \
 		qrc_main.o \
 		moc_mainwindow.o \
 		moc_dialog.o \
@@ -140,7 +142,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		openimg.cpp \
 		save_image.cpp \
 		dialog.cpp \
-		dialog_getrgb.cpp
+		dialog_getrgb.cpp \
+		get_histogram.cpp
 QMAKE_TARGET  = main
 DESTDIR       = 
 TARGET        = main
@@ -297,7 +300,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents main.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents all.h mainwindow.h dialog.h dialog_getrgb.h $(DISTDIR)/
-	$(COPY_FILE) --parents change_size.cpp getrgb.cpp main.cpp mainwindow.cpp openimg.cpp save_image.cpp dialog.cpp dialog_getrgb.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents change_size.cpp getrgb.cpp main.cpp mainwindow.cpp openimg.cpp save_image.cpp dialog.cpp dialog_getrgb.cpp get_histogram.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui dialog.ui dialog_getrgb.ui $(DISTDIR)/
 
 
@@ -426,6 +429,13 @@ dialog_getrgb.o: dialog_getrgb.cpp all.h \
 		dialog_getrgb.h \
 		ui_dialog_getrgb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_getrgb.o dialog_getrgb.cpp
+
+get_histogram.o: get_histogram.cpp mainwindow.h \
+		all.h \
+		dialog.h \
+		dialog_getrgb.h \
+		ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o get_histogram.o get_histogram.cpp
 
 qrc_main.o: qrc_main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_main.o qrc_main.cpp

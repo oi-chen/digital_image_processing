@@ -19,24 +19,15 @@ private slots:
     void change_size(double);
     void save_image();
     void on_actionopen_triggered();
-    void on_actionsave_as_triggered();
-    void getrgbclicked(int,int,bool);
+    void getrgbclicked(int,int);
     void on_actionSize_triggered();
     void on_actionGet_Original_image_rgb_triggered();
-    void on_actionGet_transformed_image_rgb_triggered();
-    void get_historgam(bool,bool);
+    void get_historgam(bool);
     void on_actionImage_left_triggered();
-
-    void on_actionImage_right_triggered();
-
     void on_actionImage_left_2_triggered();
-
-    void on_actionImage_right_2_triggered();
-
 private:
     Ui::MainWindow *ui;
     QLabel *label;
-    QLabel *label_2;
     Dialog *dia;
     Dialog_getrgb *getrgb;
 };

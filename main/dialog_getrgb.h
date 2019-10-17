@@ -10,7 +10,7 @@ public:
     explicit Dialog_getrgb(QWidget *parent=0);
     ~Dialog_getrgb();
 signals:
-    void sendcoor(int,int,bool);
+    void sendcoor(int,int);
 private slots:
     void on_buttonBox_accepted();
     void on_buttonBox_rejected();

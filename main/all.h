@@ -2,7 +2,9 @@
 #define ALL_H
 #include<bits/stdc++.h>
 #include<opencv.hpp>
+#include<opencv2/highgui.hpp>
 #include<opencv2/imgproc.hpp>
+#include<QtGui/QIntValidator>
 #include<QApplication>
 #include<QAction>
 #include<QCoreApplication>
