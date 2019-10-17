@@ -149,9 +149,32 @@
     <addaction name="actionGet_Original_image_rgb"/>
     <addaction name="actionGet_transformed_image_rgb"/>
    </widget>
+   <widget class="QMenu" name="menuHistogram">
+    <property name="title">
+     <string>histogram</string>
+    </property>
+    <widget class="QMenu" name="menu_grayscale_distribution_histogram">
+     <property name="title">
+      <string> grayscale distribution histogram</string>
+     </property>
+     <addaction name="separator"/>
+     <addaction name="actionImage_left"/>
+     <addaction name="actionImage_right"/>
+    </widget>
+    <widget class="QMenu" name="menuRgb_distribution_histogram">
+     <property name="title">
+      <string>rgb distribution histogram</string>
+     </property>
+     <addaction name="actionImage_left_2"/>
+     <addaction name="actionImage_right_2"/>
+    </widget>
+    <addaction name="menu_grayscale_distribution_histogram"/>
+    <addaction name="menuRgb_distribution_histogram"/>
+   </widget>
    <addaction name="menufile"/>
    <addaction name="menuTransform"/>
    <addaction name="menuGetrgb"/>
+   <addaction name="menuHistogram"/>
   </widget>
   <action name="actionopen">
    <property name="text">
@@ -200,6 +223,26 @@
      <family>Consolas</family>
      <italic>true</italic>
     </font>
+   </property>
+  </action>
+  <action name="actionImage_left">
+   <property name="text">
+    <string>image_left</string>
+   </property>
+  </action>
+  <action name="actionImage_right">
+   <property name="text">
+    <string>image_right</string>
+   </property>
+  </action>
+  <action name="actionImage_left_2">
+   <property name="text">
+    <string>image_left</string>
+   </property>
+  </action>
+  <action name="actionImage_right_2">
+   <property name="text">
+    <string>image_right</string>
    </property>
   </action>
  </widget>

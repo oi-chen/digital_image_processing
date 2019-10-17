@@ -23,7 +23,8 @@ SOURCES += \
     openimg.cpp \
     save_image.cpp \
     dialog.cpp \
-    dialog_getrgb.cpp
+    dialog_getrgb.cpp \
+    get_histogram.cpp
 
 HEADERS += \
     all.h \

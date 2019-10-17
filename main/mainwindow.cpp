@@ -46,6 +46,18 @@ void MainWindow::on_actionGet_transformed_image_rgb_triggered(){
     getrgb->setWindowTitle("get transformed_image rgb");
     getrgb->show();
 }
+void MainWindow::on_actionImage_left_triggered(){
+    get_historgam(false,false);
+}
+void MainWindow::on_actionImage_right_triggered(){
+    get_historgam(false,true);
+}
+void MainWindow::on_actionImage_left_2_triggered(){
+    get_historgam(true,false);
+}
+void MainWindow::on_actionImage_right_2_triggered(){
+    get_historgam(true,true);
+}
 MainWindow::~MainWindow(){
     delete ui;
 }
