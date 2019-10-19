@@ -30,4 +30,4 @@
 #include<QVBoxLayout>
 using namespace std;
 using namespace cv;
-#endif // ALL_H
+#endif//ALL_H

@@ -24,18 +24,34 @@ SOURCES += \
     save_image.cpp \
     dialog.cpp \
     dialog_getrgb.cpp \
-    get_histogram.cpp
+    get_histogram.cpp \
+    dialog_three_point.cpp \
+    dialog_ang_and_sca.cpp \
+    dialog_movement.cpp \
+    dialog_mirror.cpp \
+    dialog_smooth.cpp \
+    affine_transformation.cpp
 
 HEADERS += \
     all.h \
     mainwindow.h \
     dialog.h \
-    dialog_getrgb.h
+    dialog_getrgb.h \
+    dialog_three_point.h \
+    dialog_ang_and_sca.h \
+    dialog_movement.h \
+    dialog_mirror.h \
+    dialog_smooth.h
 
 FORMS += \
     mainwindow.ui \
     dialog.ui \
-    dialog_getrgb.ui
+    dialog_getrgb.ui \
+    dialog_three_point.ui \
+    dialog_ang_and_sca.ui \
+    dialog_movement.ui \
+    dialog_mirror.ui \
+    dialog_smooth.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

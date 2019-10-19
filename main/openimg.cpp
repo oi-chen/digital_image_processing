@@ -4,9 +4,9 @@ extern Mat image;
 extern QImage img;
 extern QString filename;
 void MainWindow::OpenImg(){
-    filename=QFileDialog::getOpenFileName(this,tr("choose image"),".",tr("image file(*.png *.jpg *.bmp);;all(*)"));//Ñ¡ÔñÖ¸¶¨Â·¾¶´ò¿ªÍ¼Æ¬
+    filename=QFileDialog::getOpenFileName(this,tr("choose image"),".",tr("image file(*.png *.jpg *.bmp);;all(*)"));//é€‰æ‹©æŒ‡å®šè·¯å¾„æ‰“å¼€å›¾ç‰‡
     if(filename=="")
-        return;//·µ»Ø£¬±ÜÃâÎ´Ñ¡ÔñÎÄ¼şÊ±opencv·¢Éúassertion failedµ¼ÖÂ³ÌĞò·ÇÕı³£ÍË³ö
+        return;//è¿”å›ï¼Œé¿å…æœªé€‰æ‹©æ–‡ä»¶æ—¶opencvå‘ç”Ÿassertion failedå¯¼è‡´ç¨‹åºéæ­£å¸¸é€€å‡º
     img.load(filename);
     image=imread(filename.toLocal8Bit().data());
     label=new QLabel();

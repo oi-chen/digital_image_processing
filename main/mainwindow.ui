@@ -37,7 +37,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>351</width>
+          <width>751</width>
           <height>461</height>
          </rect>
         </property>
@@ -98,11 +98,28 @@
      <property name="title">
       <string>Geometric transformation</string>
      </property>
+     <widget class="QMenu" name="menuAffine_transformation">
+      <property name="title">
+       <string>Affine transformation</string>
+      </property>
+      <addaction name="actionThree_point_method"/>
+      <addaction name="actionSpecify_angle_and_scale"/>
+      <addaction name="actionParallel_movement"/>
+      <addaction name="actionMirror_flip"/>
+     </widget>
      <addaction name="actionSize"/>
+     <addaction name="menuAffine_transformation"/>
+    </widget>
+    <widget class="QMenu" name="menuEnhancement_transformation">
+     <property name="title">
+      <string>Enhancement transformation</string>
+     </property>
+     <addaction name="actionImage_smoothing"/>
     </widget>
     <addaction name="menuGeometric_transformation"/>
+    <addaction name="menuEnhancement_transformation"/>
    </widget>
-   <widget class="QMenu" name="menuGetrgb">
+   <widget class="QMenu" name="menugetrgb">
     <property name="font">
      <font>
       <family>Consolas</family>
@@ -118,25 +135,12 @@
     <property name="title">
      <string>histogram</string>
     </property>
-    <widget class="QMenu" name="menu_grayscale_distribution_histogram">
-     <property name="title">
-      <string> grayscale distribution histogram</string>
-     </property>
-     <addaction name="separator"/>
-     <addaction name="actionImage_left"/>
-    </widget>
-    <widget class="QMenu" name="menuRgb_distribution_histogram">
-     <property name="title">
-      <string>rgb distribution histogram</string>
-     </property>
-     <addaction name="actionImage_left_2"/>
-    </widget>
-    <addaction name="menu_grayscale_distribution_histogram"/>
-    <addaction name="menuRgb_distribution_histogram"/>
+    <addaction name="action_grayscale_distribution_histogram"/>
+    <addaction name="actionRgb_distribution_histogram"/>
    </widget>
    <addaction name="menufile"/>
    <addaction name="menuTransform"/>
-   <addaction name="menuGetrgb"/>
+   <addaction name="menugetrgb"/>
    <addaction name="menuHistogram"/>
   </widget>
   <action name="actionopen">
@@ -144,15 +148,10 @@
     <string>open</string>
    </property>
    <property name="shortcut">
-    <string>O</string>
+    <string>Ctrl+O</string>
    </property>
-  </action>
-  <action name="actionsave_as">
-   <property name="text">
-    <string>save as</string>
-   </property>
-   <property name="shortcut">
-    <string>S</string>
+   <property name="shortcutContext">
+    <enum>Qt::ApplicationShortcut</enum>
    </property>
   </action>
   <action name="actionSize">
@@ -188,24 +187,81 @@
     </font>
    </property>
   </action>
-  <action name="actionImage_left">
+  <action name="action_grayscale_distribution_histogram">
    <property name="text">
-    <string>image_left</string>
+    <string> grayscale distribution histogram</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
    </property>
   </action>
-  <action name="actionImage_right">
+  <action name="actionRgb_distribution_histogram">
    <property name="text">
-    <string>image_right</string>
+    <string> rgb distribution histogram</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
    </property>
   </action>
-  <action name="actionImage_left_2">
+  <action name="actionThree_point_method">
    <property name="text">
-    <string>image_left</string>
+    <string>Three-point method</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
    </property>
   </action>
-  <action name="actionImage_right_2">
+  <action name="actionSpecify_angle_and_scale">
    <property name="text">
-    <string>image_right</string>
+    <string>Specify angle and scale</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
+   </property>
+  </action>
+  <action name="actionParallel_movement">
+   <property name="text">
+    <string>Parallel movement</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
+   </property>
+  </action>
+  <action name="actionMirror_flip">
+   <property name="text">
+    <string>Mirror flip</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
+   </property>
+  </action>
+  <action name="actionImage_smoothing">
+   <property name="text">
+    <string>Image smoothing</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
    </property>
   </action>
  </widget>

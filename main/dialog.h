@@ -1,7 +1,7 @@
 #ifndef DIALOG_H
 #define DIALOG_H
 #include<all.h>
-namespace Ui {
+namespace Ui{
 class Dialog;
 }
 class Dialog: public QDialog{
@@ -19,4 +19,4 @@ signals:
 private:
     Ui::Dialog *ui;
 };
-#endif // DIALOG_H
+#endif//DIALOG_H

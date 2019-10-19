@@ -7,3 +7,9 @@
 ### 2019_10_17
 
 ui整体大更改，添加绘制直方图功能，出现新bug(保存文件时若不手动加后缀程序异常终止)：could not find a writer for the specified extension in function 'imwrite_'
+
+### 2019_10_19
+
+添加图像仿射变换功能框架及三点法变换的实现。
+
+此外，linux系统下保存文件时不会自动不全后缀名，因此导致程序异常终止。已在保存文件时加入提醒。

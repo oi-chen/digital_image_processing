@@ -1,5 +1,5 @@
-#ifndef DIALOG_GETRGB_H
-#define DIALOG_GETRGB_H
+#ifndef DIALOG_getrgb_H
+#define DIALOG_getrgb_H
 #include<all.h>
 namespace Ui{
 class Dialog_getrgb;
@@ -17,4 +17,4 @@ private slots:
 private:
     Ui::Dialog_getrgb *ui;
 };
-#endif // DIALOG_GETRGB_H
+#endif//DIALOG_getrgb_H

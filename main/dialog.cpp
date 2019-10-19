@@ -24,8 +24,9 @@ void Dialog::on_doubleSpinBox2_valueChanged(double arg1){
 void Dialog::on_horizontalSlider2_valueChanged(int value){
     ui->doubleSpinBox2->setValue((double)(ui->horizontalSlider2->value())/100);
 }
-/*用此写法也可，但拖动条每次至少拖动1，做不到无级拖动
-    void Dialog::on_doubleSpinBox2_valueChanged(double arg1){
+//鐢ㄦ鍐欐硶涔熷彲锛屼絾鎷栧姩鏉″彧鑳芥嫋鍔ㄨ嚦鏁存暟锛屽仛涓嶅埌鏃犵骇鎷栧姩
+/*
+void Dialog::on_doubleSpinBox2_valueChanged(double arg1){
     ui->horizontalSlider2->setValue(doubleToInt2(arg1)*100);
 }
 void Dialog::on_horizontalSlider2_valueChanged(int value){

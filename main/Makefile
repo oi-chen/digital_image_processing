@@ -56,10 +56,21 @@ SOURCES       = change_size.cpp \
 		save_image.cpp \
 		dialog.cpp \
 		dialog_getrgb.cpp \
-		get_histogram.cpp qrc_main.cpp \
+		get_histogram.cpp \
+		dialog_three_point.cpp \
+		dialog_ang_and_sca.cpp \
+		dialog_movement.cpp \
+		dialog_mirror.cpp \
+		dialog_smooth.cpp \
+		affine_transformation.cpp qrc_main.cpp \
 		moc_mainwindow.cpp \
 		moc_dialog.cpp \
-		moc_dialog_getrgb.cpp
+		moc_dialog_getrgb.cpp \
+		moc_dialog_three_point.cpp \
+		moc_dialog_ang_and_sca.cpp \
+		moc_dialog_movement.cpp \
+		moc_dialog_mirror.cpp \
+		moc_dialog_smooth.cpp
 OBJECTS       = change_size.o \
 		getrgb.o \
 		main.o \
@@ -69,10 +80,21 @@ OBJECTS       = change_size.o \
 		dialog.o \
 		dialog_getrgb.o \
 		get_histogram.o \
+		dialog_three_point.o \
+		dialog_ang_and_sca.o \
+		dialog_movement.o \
+		dialog_mirror.o \
+		dialog_smooth.o \
+		affine_transformation.o \
 		qrc_main.o \
 		moc_mainwindow.o \
 		moc_dialog.o \
-		moc_dialog_getrgb.o
+		moc_dialog_getrgb.o \
+		moc_dialog_three_point.o \
+		moc_dialog_ang_and_sca.o \
+		moc_dialog_movement.o \
+		moc_dialog_mirror.o \
+		moc_dialog_smooth.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -135,7 +157,12 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		main.pro all.h \
 		mainwindow.h \
 		dialog.h \
-		dialog_getrgb.h change_size.cpp \
+		dialog_getrgb.h \
+		dialog_three_point.h \
+		dialog_ang_and_sca.h \
+		dialog_movement.h \
+		dialog_mirror.h \
+		dialog_smooth.h change_size.cpp \
 		getrgb.cpp \
 		main.cpp \
 		mainwindow.cpp \
@@ -143,7 +170,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		save_image.cpp \
 		dialog.cpp \
 		dialog_getrgb.cpp \
-		get_histogram.cpp
+		get_histogram.cpp \
+		dialog_three_point.cpp \
+		dialog_ang_and_sca.cpp \
+		dialog_movement.cpp \
+		dialog_mirror.cpp \
+		dialog_smooth.cpp \
+		affine_transformation.cpp
 QMAKE_TARGET  = main
 DESTDIR       = 
 TARGET        = main
@@ -152,7 +185,7 @@ TARGET        = main
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h ui_dialog_three_point.h ui_dialog_ang_and_sca.h ui_dialog_movement.h ui_dialog_mirror.h ui_dialog_smooth.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: main.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -299,9 +332,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents main.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents all.h mainwindow.h dialog.h dialog_getrgb.h $(DISTDIR)/
-	$(COPY_FILE) --parents change_size.cpp getrgb.cpp main.cpp mainwindow.cpp openimg.cpp save_image.cpp dialog.cpp dialog_getrgb.cpp get_histogram.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.ui dialog.ui dialog_getrgb.ui $(DISTDIR)/
+	$(COPY_FILE) --parents all.h mainwindow.h dialog.h dialog_getrgb.h dialog_three_point.h dialog_ang_and_sca.h dialog_movement.h dialog_mirror.h dialog_smooth.h $(DISTDIR)/
+	$(COPY_FILE) --parents change_size.cpp getrgb.cpp main.cpp mainwindow.cpp openimg.cpp save_image.cpp dialog.cpp dialog_getrgb.cpp get_histogram.cpp dialog_three_point.cpp dialog_ang_and_sca.cpp dialog_movement.cpp dialog_mirror.cpp dialog_smooth.cpp affine_transformation.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.ui dialog.ui dialog_getrgb.ui dialog_three_point.ui dialog_ang_and_sca.ui dialog_movement.ui dialog_mirror.ui dialog_smooth.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -333,12 +366,17 @@ qrc_main.cpp: main.qrc \
 		icon_resource/open.png
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name main main.qrc -o qrc_main.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_dialog.cpp moc_dialog_getrgb.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_dialog.cpp moc_dialog_getrgb.cpp moc_dialog_three_point.cpp moc_dialog_ang_and_sca.cpp moc_dialog_movement.cpp moc_dialog_mirror.cpp moc_dialog_smooth.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_dialog.cpp moc_dialog_getrgb.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_dialog.cpp moc_dialog_getrgb.cpp moc_dialog_three_point.cpp moc_dialog_ang_and_sca.cpp moc_dialog_movement.cpp moc_dialog_mirror.cpp moc_dialog_smooth.cpp
 moc_mainwindow.cpp: all.h \
 		dialog.h \
+		dialog_ang_and_sca.h \
 		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h \
 		mainwindow.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
@@ -353,11 +391,36 @@ moc_dialog_getrgb.cpp: all.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialog_getrgb.h -o moc_dialog_getrgb.cpp
 
+moc_dialog_three_point.cpp: all.h \
+		dialog_three_point.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialog_three_point.h -o moc_dialog_three_point.cpp
+
+moc_dialog_ang_and_sca.cpp: all.h \
+		dialog_ang_and_sca.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialog_ang_and_sca.h -o moc_dialog_ang_and_sca.cpp
+
+moc_dialog_movement.cpp: all.h \
+		dialog_movement.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialog_movement.h -o moc_dialog_movement.cpp
+
+moc_dialog_mirror.cpp: all.h \
+		dialog_mirror.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialog_mirror.h -o moc_dialog_mirror.cpp
+
+moc_dialog_smooth.cpp: all.h \
+		dialog_smooth.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/oi-chen/Desktop/cpp_qt_for_linux/main -I/usr/local/include -I/usr/local/include/opencv4 -I/usr/local/include/opencv4/opencv2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include dialog_smooth.h -o moc_dialog_smooth.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h
+compiler_uic_make_all: ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h ui_dialog_three_point.h ui_dialog_ang_and_sca.h ui_dialog_movement.h ui_dialog_mirror.h ui_dialog_smooth.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h
+	-$(DEL_FILE) ui_mainwindow.h ui_dialog.h ui_dialog_getrgb.h ui_dialog_three_point.h ui_dialog_ang_and_sca.h ui_dialog_movement.h ui_dialog_mirror.h ui_dialog_smooth.h
 ui_mainwindow.h: mainwindow.ui \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic mainwindow.ui -o ui_mainwindow.h
@@ -369,6 +432,26 @@ ui_dialog.h: dialog.ui \
 ui_dialog_getrgb.h: dialog_getrgb.ui \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic dialog_getrgb.ui -o ui_dialog_getrgb.h
+
+ui_dialog_three_point.h: dialog_three_point.ui \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic dialog_three_point.ui -o ui_dialog_three_point.h
+
+ui_dialog_ang_and_sca.h: dialog_ang_and_sca.ui \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic dialog_ang_and_sca.ui -o ui_dialog_ang_and_sca.h
+
+ui_dialog_movement.h: dialog_movement.ui \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic dialog_movement.ui -o ui_dialog_movement.h
+
+ui_dialog_mirror.h: dialog_mirror.ui \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic dialog_mirror.ui -o ui_dialog_mirror.h
+
+ui_dialog_smooth.h: dialog_smooth.ui \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic dialog_smooth.ui -o ui_dialog_smooth.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -383,41 +466,71 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 change_size.o: change_size.cpp mainwindow.h \
 		all.h \
 		dialog.h \
+		dialog_ang_and_sca.h \
 		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o change_size.o change_size.cpp
 
 getrgb.o: getrgb.cpp mainwindow.h \
 		all.h \
 		dialog.h \
+		dialog_ang_and_sca.h \
 		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o getrgb.o getrgb.cpp
 
 main.o: main.cpp mainwindow.h \
 		all.h \
 		dialog.h \
-		dialog_getrgb.h
+		dialog_ang_and_sca.h \
+		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
 		all.h \
 		dialog.h \
+		dialog_ang_and_sca.h \
 		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 openimg.o: openimg.cpp mainwindow.h \
 		all.h \
 		dialog.h \
+		dialog_ang_and_sca.h \
 		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o openimg.o openimg.cpp
 
 save_image.o: save_image.cpp mainwindow.h \
 		all.h \
 		dialog.h \
-		dialog_getrgb.h
+		dialog_ang_and_sca.h \
+		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o save_image.o save_image.cpp
 
 dialog.o: dialog.cpp dialog.h \
@@ -425,17 +538,59 @@ dialog.o: dialog.cpp dialog.h \
 		ui_dialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog.o dialog.cpp
 
-dialog_getrgb.o: dialog_getrgb.cpp all.h \
-		dialog_getrgb.h \
+dialog_getrgb.o: dialog_getrgb.cpp dialog_getrgb.h \
+		all.h \
 		ui_dialog_getrgb.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_getrgb.o dialog_getrgb.cpp
 
 get_histogram.o: get_histogram.cpp mainwindow.h \
 		all.h \
 		dialog.h \
+		dialog_ang_and_sca.h \
 		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o get_histogram.o get_histogram.cpp
+
+dialog_three_point.o: dialog_three_point.cpp dialog_three_point.h \
+		all.h \
+		ui_dialog_three_point.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_three_point.o dialog_three_point.cpp
+
+dialog_ang_and_sca.o: dialog_ang_and_sca.cpp dialog_ang_and_sca.h \
+		all.h \
+		ui_dialog_ang_and_sca.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_ang_and_sca.o dialog_ang_and_sca.cpp
+
+dialog_movement.o: dialog_movement.cpp dialog_movement.h \
+		all.h \
+		ui_dialog_movement.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_movement.o dialog_movement.cpp
+
+dialog_mirror.o: dialog_mirror.cpp dialog_mirror.h \
+		all.h \
+		ui_dialog_mirror.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_mirror.o dialog_mirror.cpp
+
+dialog_smooth.o: dialog_smooth.cpp dialog_smooth.h \
+		all.h \
+		ui_dialog_smooth.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog_smooth.o dialog_smooth.cpp
+
+affine_transformation.o: affine_transformation.cpp mainwindow.h \
+		all.h \
+		dialog.h \
+		dialog_ang_and_sca.h \
+		dialog_getrgb.h \
+		dialog_mirror.h \
+		dialog_movement.h \
+		dialog_smooth.h \
+		dialog_three_point.h \
+		ui_mainwindow.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o affine_transformation.o affine_transformation.cpp
 
 qrc_main.o: qrc_main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_main.o qrc_main.cpp
@@ -448,6 +603,21 @@ moc_dialog.o: moc_dialog.cpp
 
 moc_dialog_getrgb.o: moc_dialog_getrgb.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_getrgb.o moc_dialog_getrgb.cpp
+
+moc_dialog_three_point.o: moc_dialog_three_point.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_three_point.o moc_dialog_three_point.cpp
+
+moc_dialog_ang_and_sca.o: moc_dialog_ang_and_sca.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_ang_and_sca.o moc_dialog_ang_and_sca.cpp
+
+moc_dialog_movement.o: moc_dialog_movement.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_movement.o moc_dialog_movement.cpp
+
+moc_dialog_mirror.o: moc_dialog_mirror.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_mirror.o moc_dialog_mirror.cpp
+
+moc_dialog_smooth.o: moc_dialog_smooth.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog_smooth.o moc_dialog_smooth.cpp
 
 ####### Install
 

@@ -2,7 +2,12 @@
 #define MAINWINDOW_H
 #include<all.h>
 #include<dialog.h>
+#include<dialog_ang_and_sca.h>
 #include<dialog_getrgb.h>
+#include<dialog_mirror.h>
+#include<dialog_movement.h>
+#include<dialog_smooth.h>
+#include<dialog_three_point.h>
 QT_BEGIN_NAMESPACE
 namespace Ui{
 class MainWindow;
@@ -23,12 +28,24 @@ private slots:
     void on_actionSize_triggered();
     void on_actionGet_Original_image_rgb_triggered();
     void get_historgam(bool);
-    void on_actionImage_left_triggered();
-    void on_actionImage_left_2_triggered();
+    void on_action_grayscale_distribution_histogram_triggered();
+    void on_actionRgb_distribution_histogram_triggered();
+    void on_actionThree_point_method_triggered();
+    void on_actionMirror_flip_triggered();
+    void on_actionParallel_movement_triggered();
+    void on_actionSpecify_angle_and_scale_triggered();
+    void on_actionImage_smoothing_triggered();
+    void get_three_point();
+
 private:
     Ui::MainWindow *ui;
     QLabel *label;
     Dialog *dia;
+    Dialog_ang_and_sca *ang;
     Dialog_getrgb *getrgb;
+    Dialog_mirror *mirror;
+    Dialog_movement *movement;
+    Dialog_smooth *smooth;
+    Dialog_three_point *three_point;
 };
-#endif // MAINWINDOW_H
+#endif//MAINWINDOW_H
