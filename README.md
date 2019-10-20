@@ -6,7 +6,7 @@
 
 ### 2019_10_17
 
-ui整体大更改，添加绘制直方图功能，出现新bug(保存文件时若不手动加后缀程序异常终止)：could not find a writer for the specified extension in function 'imwrite_'
+ui整体大更改，前一日bug得以修复。添加绘制直方图功能，出现新bug(保存文件时若不手动加后缀程序异常终止)：could not find a writer for the specified extension in function 'imwrite_'
 
 ### 2019_10_19
 
