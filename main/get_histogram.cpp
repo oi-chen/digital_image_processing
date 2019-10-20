@@ -50,7 +50,5 @@ void MainWindow::get_historgam(bool flag){
         image_changed=histImage;
         imshow("historgam",histImage);
     }
-    int button=QMessageBox::question(this,tr("save file"),QString(tr("Do you need to save this image?")),QMessageBox::Yes|QMessageBox::No);//提示是否保存生成直方图
-    if(button==QMessageBox::Yes)
-        save_image();
+    remind_save();
 }

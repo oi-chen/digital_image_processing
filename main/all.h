@@ -7,6 +7,7 @@
 #include<QtGui/QIntValidator>
 #include<QApplication>
 #include<QAction>
+#include<QCloseEvent>
 #include<QCoreApplication>
 #include<QDebug>
 #include<QFileDialog>

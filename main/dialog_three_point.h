@@ -7,10 +7,10 @@ class Dialog_three_point;
 class Dialog_three_point:public QDialog{
     Q_OBJECT
 public:
-    explicit Dialog_three_point(QWidget *parent = 0);
+    explicit Dialog_three_point(QWidget *parent=0);
     ~Dialog_three_point();
 signals:
-    void send_three_coor();
+    void send_parameter();
 private slots:
     void on_buttonBox_accepted();
     void on_buttonBox_rejected();

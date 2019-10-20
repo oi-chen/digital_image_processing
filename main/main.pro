@@ -27,10 +27,9 @@ SOURCES += \
     get_histogram.cpp \
     dialog_three_point.cpp \
     dialog_ang_and_sca.cpp \
-    dialog_movement.cpp \
-    dialog_mirror.cpp \
     dialog_smooth.cpp \
-    affine_transformation.cpp
+    affine_transformation.cpp \
+    image_enhancement.cpp
 
 HEADERS += \
     all.h \
@@ -39,8 +38,6 @@ HEADERS += \
     dialog_getrgb.h \
     dialog_three_point.h \
     dialog_ang_and_sca.h \
-    dialog_movement.h \
-    dialog_mirror.h \
     dialog_smooth.h
 
 FORMS += \
@@ -49,8 +46,6 @@ FORMS += \
     dialog_getrgb.ui \
     dialog_three_point.ui \
     dialog_ang_and_sca.ui \
-    dialog_movement.ui \
-    dialog_mirror.ui \
     dialog_smooth.ui
 
 # Default rules for deployment.

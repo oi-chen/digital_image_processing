@@ -2,7 +2,7 @@
 #include<dialog.h>
 #include<ui_mainwindow.h>
 Mat image,image_changed;
-QImage img,img2;
+QImage img;
 QString filename;
 bool flag;
 MainWindow::MainWindow(QWidget *parent):
@@ -12,13 +12,23 @@ MainWindow::MainWindow(QWidget *parent):
     ang=new Dialog_ang_and_sca;
     dia=new Dialog;
     getrgb=new Dialog_getrgb;
-    mirror=new Dialog_mirror;
-    movement=new Dialog_movement;
     smooth=new Dialog_smooth;
     three_point=new Dialog_three_point;
     connect(dia,SIGNAL(sendsignal(double)),this,SLOT(change_size(double)));
     connect(getrgb,SIGNAL(sendcoor(int,int)),this,SLOT(getrgbclicked(int,int)));
-    connect(three_point,SIGNAL(send_three_coor()),this,SLOT(get_three_point()));
+    connect(three_point,SIGNAL(parameter()),this,SLOT(get_three_point()));
+    connect(ang,SIGNAL(send_parameter(double,double)),this,SLOT(get_ang_and_sca(double,double)));
+    connect(smooth,SIGNAL(send_parameter()),this,SLOT(image_smooth()));
+}
+void MainWindow::closeEvent(QCloseEvent *event){
+    int button=QMessageBox::question(this,tr("Attention"),QString(tr("Mainwindow is closing, do you need to close all child windows?")),QMessageBox::Yes|QMessageBox::No);//提示是否关闭所有子窗口
+    if(button==QMessageBox::Yes)
+        exit(0);
+}
+void MainWindow::remind_save(){
+    int button=QMessageBox::question(this,tr("save file"),QString(tr("Do you need to save this image?")),QMessageBox::Yes|QMessageBox::No);//提示是否保存生成图像
+    if(button==QMessageBox::Yes)
+        save_image();
 }
 void MainWindow::on_actionopen_triggered(){
     OpenImg();
@@ -47,21 +57,12 @@ void MainWindow::on_actionSpecify_angle_and_scale_triggered(){
     ang->setWindowTitle("Fill in the parameters");
     ang->show();
 }
-void MainWindow::on_actionParallel_movement_triggered(){
-    if(image.empty()){
-        QMessageBox::information(this,tr("Error"),tr("Can't find image"));
-        return;
-    }
-    movement->setWindowTitle("Fill in the parameters");
-    movement->show();
-}
 void MainWindow::on_actionMirror_flip_triggered(){
     if(image.empty()){
         QMessageBox::information(this,tr("Error"),tr("Can't find image"));
         return;
     }
-    mirror->setWindowTitle("Fill in the parameters");
-    mirror->show();
+    mirror_flip();
 }
 void MainWindow::on_actionImage_smoothing_triggered(){
     if(image.empty()){

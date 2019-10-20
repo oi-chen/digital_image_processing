@@ -4,8 +4,6 @@
 #include<dialog.h>
 #include<dialog_ang_and_sca.h>
 #include<dialog_getrgb.h>
-#include<dialog_mirror.h>
-#include<dialog_movement.h>
 #include<dialog_smooth.h>
 #include<dialog_three_point.h>
 QT_BEGIN_NAMESPACE
@@ -19,6 +17,8 @@ public:
     explicit MainWindow(QWidget *parent=0);
     ~MainWindow();
     static QImage save();
+protected:
+    void closeEvent(QCloseEvent *event);
 private slots:
     void OpenImg();
     void change_size(double);
@@ -32,19 +32,19 @@ private slots:
     void on_actionRgb_distribution_histogram_triggered();
     void on_actionThree_point_method_triggered();
     void on_actionMirror_flip_triggered();
-    void on_actionParallel_movement_triggered();
     void on_actionSpecify_angle_and_scale_triggered();
     void on_actionImage_smoothing_triggered();
     void get_three_point();
-
+    void get_ang_and_sca(double,double);
+    void image_smooth();
 private:
+    void remind_save();
+    void mirror_flip();
     Ui::MainWindow *ui;
     QLabel *label;
     Dialog *dia;
     Dialog_ang_and_sca *ang;
     Dialog_getrgb *getrgb;
-    Dialog_mirror *mirror;
-    Dialog_movement *movement;
     Dialog_smooth *smooth;
     Dialog_three_point *three_point;
 };

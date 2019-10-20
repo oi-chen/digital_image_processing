@@ -104,7 +104,6 @@
       </property>
       <addaction name="actionThree_point_method"/>
       <addaction name="actionSpecify_angle_and_scale"/>
-      <addaction name="actionParallel_movement"/>
       <addaction name="actionMirror_flip"/>
      </widget>
      <addaction name="actionSize"/>
@@ -223,17 +222,6 @@
   <action name="actionSpecify_angle_and_scale">
    <property name="text">
     <string>Specify angle and scale</string>
-   </property>
-   <property name="font">
-    <font>
-     <family>Consolas</family>
-     <italic>true</italic>
-    </font>
-   </property>
-  </action>
-  <action name="actionParallel_movement">
-   <property name="text">
-    <string>Parallel movement</string>
    </property>
    <property name="font">
     <font>

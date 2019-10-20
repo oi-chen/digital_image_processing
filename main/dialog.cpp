@@ -11,13 +11,14 @@ Dialog::Dialog(QWidget *parent):
     ui->horizontalSlider2->setMaximum(1000);
     ui->horizontalSlider2->setSingleStep(1);
 }
-int doubleToInt(double d){
+int doubleToInt(double d){//转类型时修正，避免两个控件偏差
     double intPart=floor(d);
     if((d-intPart)>=(double)0.5)
         return (int)(intPart+1);
     else
         return (int)intPart;
 }
+//拖动条与输入框同步
 void Dialog::on_doubleSpinBox2_valueChanged(double arg1){
     ui->horizontalSlider2->setValue(doubleToInt((ui->doubleSpinBox2->value())*100));
 }
