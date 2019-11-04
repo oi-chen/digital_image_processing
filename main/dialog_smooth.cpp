@@ -1,19 +1,21 @@
 #include<dialog_smooth.h>
 #include<ui_dialog_smooth.h>
 int templet[9];
+double factor;
 Dialog_smooth::Dialog_smooth(QWidget *parent):
     QDialog(parent),
     ui(new Ui::Dialog_smooth){
     ui->setupUi(this);
     ui->lineEdit->setText("1");
-    ui->lineEdit_2->setText("1");
+    ui->lineEdit_2->setText("2");
     ui->lineEdit_3->setText("1");
-    ui->lineEdit_4->setText("1");
-    ui->lineEdit_5->setText("0");
-    ui->lineEdit_6->setText("1");
+    ui->lineEdit_4->setText("2");
+    ui->lineEdit_5->setText("4");
+    ui->lineEdit_6->setText("2");
     ui->lineEdit_7->setText("1");
-    ui->lineEdit_8->setText("1");
+    ui->lineEdit_8->setText("2");
     ui->lineEdit_9->setText("1");
+    ui->lineEdit_10->setText("0.0625");
     ui->lineEdit->setValidator(new QIntValidator(ui->lineEdit));//限制输入整数
     ui->lineEdit_2->setValidator(new QIntValidator(ui->lineEdit_2));
     ui->lineEdit_3->setValidator(new QIntValidator(ui->lineEdit_3));
@@ -23,6 +25,7 @@ Dialog_smooth::Dialog_smooth(QWidget *parent):
     ui->lineEdit_7->setValidator(new QIntValidator(ui->lineEdit_7));
     ui->lineEdit_8->setValidator(new QIntValidator(ui->lineEdit_8));
     ui->lineEdit_9->setValidator(new QIntValidator(ui->lineEdit_9));
+    ui->lineEdit_10->setValidator(new QDoubleValidator(ui->lineEdit_10));//限制模板因子为double类型
 }
 void Dialog_smooth::on_buttonBox_accepted(){
     templet[0]=ui->lineEdit->text().toInt();
@@ -34,6 +37,7 @@ void Dialog_smooth::on_buttonBox_accepted(){
     templet[6]=ui->lineEdit_7->text().toInt();
     templet[7]=ui->lineEdit_8->text().toInt();
     templet[8]=ui->lineEdit_9->text().toInt();
+    factor=ui->lineEdit_10->text().toDouble();
     emit send_parameter();
     return;
 }
