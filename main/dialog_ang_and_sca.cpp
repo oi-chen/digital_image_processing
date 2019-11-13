@@ -8,6 +8,7 @@ Dialog_ang_and_sca::Dialog_ang_and_sca(QWidget *parent) :
     ui->doubleSpinBox->setMaximum(10.00);
     ui->doubleSpinBox->setSingleStep(0.01);
     ui->lineEdit->setValidator(new QDoubleValidator(ui->lineEdit));//限制旋转角度为浮点数
+    ui->lineEdit->setText("45");
 }
 void Dialog_ang_and_sca::on_buttonBox_accepted(){
     emit send_parameter(ui->doubleSpinBox->value(),ui->lineEdit->text().toDouble());

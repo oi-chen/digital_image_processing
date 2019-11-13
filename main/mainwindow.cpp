@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent):
     three_point=new Dialog_three_point;
     connect(dia,SIGNAL(sendsignal(double)),this,SLOT(change_size(double)));
     connect(getrgb,SIGNAL(sendcoor(int,int)),this,SLOT(getrgbclicked(int,int)));
-    connect(three_point,SIGNAL(parameter()),this,SLOT(get_three_point()));
+    connect(three_point,SIGNAL(send_parameter()),this,SLOT(get_three_point()));
     connect(ang,SIGNAL(send_parameter(double,double)),this,SLOT(get_ang_and_sca(double,double)));
     connect(smooth,SIGNAL(send_parameter()),this,SLOT(image_smooth()));
 }
