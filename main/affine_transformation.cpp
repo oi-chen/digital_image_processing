@@ -26,13 +26,13 @@ void MainWindow::get_ang_and_sca(double zoom,double ang){//指定角度和比例
 void MainWindow::mirror_flip(){//镜像变换
     Point2f origin_points[3];
     Point2f changed_points[3];
-    origin_points[0] = Point2i(0, 0);
-    origin_points[1] = Point2i(0, image.rows);
-    origin_points[2] = Point2i(image.cols, 0);
-    changed_points[0] = Point2i(image.cols, 0);//镜像变换后三点位置
-    changed_points[1] = Point2i(image.cols, image.rows);
-    changed_points[2] = Point2i(0, 0);
-    Mat M=getAffineTransform(origin_points, changed_points);//计算变换矩阵
+    origin_points[0]=Point2i(0,0);
+    origin_points[1]=Point2i(0,image.rows);
+    origin_points[2]=Point2i(image.cols,0);
+    changed_points[0]=Point2i(image.cols,0);//镜像变换后三点位置
+    changed_points[1]=Point2i(image.cols,image.rows);
+    changed_points[2]=Point2i(0,0);
+    Mat M=getAffineTransform(origin_points,changed_points);//计算变换矩阵
     warpAffine(image,image_changed,M,Size(image.cols,image.rows));//仿射变换
     imshow("Mirror flip",image_changed);
     remind_save();

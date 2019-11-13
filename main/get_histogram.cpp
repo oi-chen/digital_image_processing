@@ -37,7 +37,7 @@ void MainWindow::get_historgam(bool flag){
         calcHist(&rgb_channel[1],1,0,Mat(),hist_g,1,histsize,&histRange,true,false);
         calcHist(&rgb_channel[2],1,0,Mat(),hist_r,1,histsize,&histRange,true,false);
         int hist_h=360,hist_w=bins*3,bin_w=cvRound((double)hist_w/bins);
-        Mat histImage(hist_h, hist_w, CV_8UC3, Scalar(0, 0, 0));//创建黑底图像
+        Mat histImage(hist_h,hist_w,CV_8UC3,Scalar(0, 0, 0));//创建黑底图像
         normalize(hist_b,hist_b,0,histImage.rows,NORM_MINMAX,-1,Mat());//直方图归一化
         normalize(hist_g,hist_g,0,histImage.rows,NORM_MINMAX,-1,Mat());
         normalize(hist_r,hist_r,0,histImage.rows,NORM_MINMAX,-1,Mat());
