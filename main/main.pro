@@ -9,57 +9,62 @@ DEFINES+=QT_DEPRECATED_WARNINGS
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-SOURCES+= \
-    change_size.cpp \
-    getrgb.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    openimg.cpp \
-    save_image.cpp \
-    dialog.cpp \
-    dialog_getrgb.cpp \
-    get_histogram.cpp \
-    dialog_three_point.cpp \
-    dialog_ang_and_sca.cpp \
-    dialog_smooth.cpp \
-    affine_transformation.cpp \
-    image_enhancement.cpp \
-    dialog_gray_line_trans.cpp \
-    gray_line_trans.cpp
-HEADERS+= \
-    all.h \
-    mainwindow.h \
-    dialog.h \
-    dialog_getrgb.h \
-    dialog_three_point.h \
-    dialog_ang_and_sca.h \
-    dialog_smooth.h \
-    dialog_gray_line_trans.h
-FORMS+= \
-    mainwindow.ui \
-    dialog.ui \
-    dialog_getrgb.ui \
-    dialog_three_point.ui \
-    dialog_ang_and_sca.ui \
-    dialog_smooth.ui \
-    dialog_gray_line_trans.ui
+#DEFINES+=QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+SOURCES+=\
+    source/change_size.cpp\
+    source/getrgb.cpp\
+    source/main.cpp\
+    source/mainwindow.cpp\
+    source/openimg.cpp\
+    source/save_image.cpp\
+    source/dialog.cpp\
+    source/dialog_getrgb.cpp\
+    source/get_histogram.cpp\
+    source/dialog_three_point.cpp\
+    source/dialog_ang_and_sca.cpp\
+    source/dialog_smooth.cpp\
+    source/affine_transformation.cpp\
+    source/image_enhancement.cpp\
+    source/dialog_gray_line_trans.cpp\
+    source/gray_line_trans.cpp
+HEADERS+=\
+    header/all.h\
+    header/mainwindow.h\
+    header/dialog.h\
+    header/dialog_getrgb.h\
+    header/dialog_three_point.h\
+    header/dialog_ang_and_sca.h\
+    header/dialog_smooth.h\
+    header/dialog_gray_line_trans.h
+FORMS+=\
+    form/mainwindow.ui\
+    form/dialog.ui\
+    form/dialog_getrgb.ui\
+    form/dialog_three_point.ui\
+    form/dialog_ang_and_sca.ui\
+    form/dialog_smooth.ui\
+    form/dialog_gray_line_trans.ui
 # Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+qnx: target.path=/tmp/$${TARGET}/bin
+else: unix:!android: target.path=/opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS+=target
 # for_opencv
-INCLUDEPATH+= /usr/local/include\
-              /usr/local/include/opencv4\
-              /usr/local/include/opencv4/opencv2
-LIBS += -L /usr/local/lib/lib*
+INCLUDEPATH+=/usr/local/include\
+            /usr/local/include/opencv4\
+            /usr/local/include/opencv4/opencv2\
+            ./header
+LIBS+=-L /usr/local/lib/lib*
 # app图标
-RC_ICONS = icon.ico
+RC_ICONS=icon.ico
 # 初学配置
 QMAKE_CXXFLAGS+=-std=c++0x
 TARGET=main
 TEMPLATE=app
-RESOURCES+= \
+RESOURCES+=\
     main.qrc
-# 设置ui*.h文件的生成位置为当前目录，以便于#include<ui*.h>寻找
-UI_DIR=.
+# 设置各种中间文件及可执行文件生成目录
+DESTDIR=build
+OBJECTS_DIR=build/obj
+MOC_DIR=build/moc
+RCC_DIR=build/rcc
+UI_DIR=build/ui
