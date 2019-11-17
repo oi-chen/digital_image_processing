@@ -14,11 +14,13 @@ MainWindow::MainWindow(QWidget *parent):
     getrgb=new Dialog_getrgb;
     smooth=new Dialog_smooth;
     three_point=new Dialog_three_point;
+    graytrans=new Dialog_gray_line_trans;
     connect(dia,SIGNAL(sendsignal(double)),this,SLOT(change_size(double)));
     connect(getrgb,SIGNAL(sendcoor(int,int)),this,SLOT(getrgbclicked(int,int)));
     connect(three_point,SIGNAL(send_parameter()),this,SLOT(get_three_point()));
     connect(ang,SIGNAL(send_parameter(double,double)),this,SLOT(get_ang_and_sca(double,double)));
     connect(smooth,SIGNAL(send_parameter()),this,SLOT(image_smooth()));
+    connect(graytrans,SIGNAL(send_parameter()),this,SLOT(gray_line_trans()));
 }
 void MainWindow::closeEvent(QCloseEvent *event){
     int button=QMessageBox::question(this,tr("Attention"),QString(tr("Mainwindow is closing, do you need to close all child windows?")),QMessageBox::Yes|QMessageBox::No);//提示是否关闭所有子窗口
@@ -79,6 +81,14 @@ void MainWindow::on_actionGet_Original_image_rgb_triggered(){
     }
     getrgb->setWindowTitle("get original_image rgb");
     getrgb->show();
+}
+void MainWindow::on_actionGray_scale_linear_transformation_triggered(){
+    if(image.empty()){
+        QMessageBox::information(this,tr("Error"),tr("Can't find image"));
+        return;
+    }
+    graytrans->setWindowTitle("Fill in the parameters");
+    graytrans->show();
 }
 void MainWindow::on_action_grayscale_distribution_histogram_triggered(){
     get_historgam(false);

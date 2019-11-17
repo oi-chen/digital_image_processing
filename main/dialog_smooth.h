@@ -9,11 +9,11 @@ class Dialog_smooth:public QDialog{
 public:
     explicit Dialog_smooth(QWidget *parent=0);
     ~Dialog_smooth();
+signals:
+    void send_parameter();
 private slots:
     void on_buttonBox_accepted();
     void on_buttonBox_rejected();
-signals:
-    void send_parameter();
 private:
     Ui::Dialog_smooth *ui;
 };

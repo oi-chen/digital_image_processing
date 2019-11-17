@@ -9,11 +9,11 @@ class Dialog_ang_and_sca:public QDialog{
 public:
     explicit Dialog_ang_and_sca(QWidget *parent=0);
     ~Dialog_ang_and_sca();
+signals:
+    void send_parameter(double,double);
 private slots:
     void on_buttonBox_accepted();
     void on_buttonBox_rejected();
-signals:
-    void send_parameter(double,double);
 private:
     Ui::Dialog_ang_and_sca *ui;
 };

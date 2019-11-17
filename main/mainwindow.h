@@ -4,6 +4,7 @@
 #include<dialog.h>
 #include<dialog_ang_and_sca.h>
 #include<dialog_getrgb.h>
+#include<dialog_gray_line_trans.h>
 #include<dialog_smooth.h>
 #include<dialog_three_point.h>
 QT_BEGIN_NAMESPACE
@@ -37,6 +38,9 @@ private slots:
     void get_three_point();
     void get_ang_and_sca(double,double);
     void image_smooth();
+    void gray_line_trans();
+    void on_actionGray_scale_linear_transformation_triggered();
+
 private:
     void remind_save();
     void mirror_flip();
@@ -45,6 +49,7 @@ private:
     Dialog *dia;
     Dialog_ang_and_sca *ang;
     Dialog_getrgb *getrgb;
+    Dialog_gray_line_trans *graytrans;
     Dialog_smooth *smooth;
     Dialog_three_point *three_point;
 };

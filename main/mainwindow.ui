@@ -117,6 +117,7 @@
     </widget>
     <addaction name="menuGeometric_transformation"/>
     <addaction name="menuEnhancement_transformation"/>
+    <addaction name="actionGray_scale_linear_transformation"/>
    </widget>
    <widget class="QMenu" name="menugetrgb">
     <property name="font">
@@ -244,6 +245,17 @@
   <action name="actionImage_smoothing">
    <property name="text">
     <string>Image smoothing</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
+   </property>
+  </action>
+  <action name="actionGray_scale_linear_transformation">
+   <property name="text">
+    <string>Gray scale linear transformation</string>
    </property>
    <property name="font">
     <font>

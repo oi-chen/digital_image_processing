@@ -24,7 +24,9 @@ SOURCES+= \
     dialog_ang_and_sca.cpp \
     dialog_smooth.cpp \
     affine_transformation.cpp \
-    image_enhancement.cpp
+    image_enhancement.cpp \
+    dialog_gray_line_trans.cpp \
+    gray_line_trans.cpp
 HEADERS+= \
     all.h \
     mainwindow.h \
@@ -32,14 +34,16 @@ HEADERS+= \
     dialog_getrgb.h \
     dialog_three_point.h \
     dialog_ang_and_sca.h \
-    dialog_smooth.h
+    dialog_smooth.h \
+    dialog_gray_line_trans.h
 FORMS+= \
     mainwindow.ui \
     dialog.ui \
     dialog_getrgb.ui \
     dialog_three_point.ui \
     dialog_ang_and_sca.ui \
-    dialog_smooth.ui
+    dialog_smooth.ui \
+    dialog_gray_line_trans.ui
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
