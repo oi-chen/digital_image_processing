@@ -1,3 +1,3 @@
-main/build
-main/.qmake.stash
-main/Makefile
+build
+.qmake.stash
+Makefile

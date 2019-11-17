@@ -22,7 +22,7 @@ SOURCES+=\
     source/get_histogram.cpp\
     source/dialog_three_point.cpp\
     source/dialog_ang_and_sca.cpp\
-    source/dialog_smooth.cpp\
+    source/dialog_smooth.cpp\./
     source/affine_transformation.cpp\
     source/image_enhancement.cpp\
     source/dialog_gray_line_trans.cpp\
@@ -36,6 +36,7 @@ HEADERS+=\
     header/dialog_ang_and_sca.h\
     header/dialog_smooth.h\
     header/dialog_gray_line_trans.h
+INCLUDEPATH+=./header
 FORMS+=\
     form/mainwindow.ui\
     form/dialog.ui\
@@ -51,11 +52,10 @@ else: unix:!android: target.path=/opt/$${TARGET}/bin
 # for_opencv
 INCLUDEPATH+=/usr/local/include\
             /usr/local/include/opencv4\
-            /usr/local/include/opencv4/opencv2\
-            ./header
+            /usr/local/include/opencv4/opencv2
 LIBS+=-L /usr/local/lib/lib*
 # app图标
-RC_ICONS=icon.ico
+RC_ICONS=icon/icon.ico
 # 初学配置
 QMAKE_CXXFLAGS+=-std=c++0x
 TARGET=main
