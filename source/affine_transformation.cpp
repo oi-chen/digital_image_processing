@@ -1,5 +1,4 @@
 #include<mainwindow.h>
-#include<ui_mainwindow.h>
 extern double three_coor[6];
 extern Mat image,image_changed;
 void MainWindow::get_three_point(){//三点法
@@ -15,6 +14,7 @@ void MainWindow::get_three_point(){//三点法
     warpAffine(image,image_changed,M,image.size());//仿射变换
     imshow("Three-point method",image_changed);
     remind_save();
+    return;
 }
 void MainWindow::get_ang_and_sca(double zoom,double ang){//指定角度和比例
     Point2f center(image.cols/2,image.rows/2);//旋转中心
@@ -22,6 +22,7 @@ void MainWindow::get_ang_and_sca(double zoom,double ang){//指定角度和比例
     warpAffine(image,image_changed,M,Size(image.cols,image.rows),INTER_LINEAR);//仿射变换
     imshow("Specify angle and scale",image_changed);
     remind_save();
+    return;
 }
 void MainWindow::mirror_flip(){//镜像变换
     Point2f origin_points[3];
@@ -36,4 +37,5 @@ void MainWindow::mirror_flip(){//镜像变换
     warpAffine(image,image_changed,M,Size(image.cols,image.rows));//仿射变换
     imshow("Mirror flip",image_changed);
     remind_save();
+    return;
 }

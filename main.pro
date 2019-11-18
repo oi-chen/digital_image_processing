@@ -26,7 +26,8 @@ SOURCES+=\
     source/affine_transformation.cpp\
     source/image_enhancement.cpp\
     source/dialog_gray_line_trans.cpp\
-    source/gray_line_trans.cpp
+    source/gray_line_trans.cpp\
+    source/image_identification.cpp
 HEADERS+=\
     header/all.h\
     header/mainwindow.h\

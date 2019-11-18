@@ -1,5 +1,4 @@
 #include<mainwindow.h>
-#include<ui_mainwindow.h>
 extern double a,b,c,d;
 extern Mat image,image_changed;
 void MainWindow::gray_line_trans(){
@@ -19,4 +18,5 @@ void MainWindow::gray_line_trans(){
             }
     imshow("Gray scale linear transformation",image_changed);
     remind_save();
+    return;
 }

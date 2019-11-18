@@ -138,10 +138,23 @@
     <addaction name="action_grayscale_distribution_histogram"/>
     <addaction name="actionRgb_distribution_histogram"/>
    </widget>
+   <widget class="QMenu" name="menuImage_Identification">
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <italic>true</italic>
+     </font>
+    </property>
+    <property name="title">
+     <string>image identification</string>
+    </property>
+    <addaction name="actionObject_detection_demo"/>
+   </widget>
    <addaction name="menufile"/>
    <addaction name="menuTransform"/>
    <addaction name="menugetrgb"/>
    <addaction name="menuHistogram"/>
+   <addaction name="menuImage_Identification"/>
   </widget>
   <action name="actionopen">
    <property name="text">
@@ -156,7 +169,7 @@
   </action>
   <action name="actionSize">
    <property name="text">
-    <string>size</string>
+    <string>Size</string>
    </property>
    <property name="font">
     <font>
@@ -167,7 +180,7 @@
   </action>
   <action name="actionGet_Original_image_rgb">
    <property name="text">
-    <string>get original_image rgb</string>
+    <string>Get original_image rgb</string>
    </property>
    <property name="font">
     <font>
@@ -189,7 +202,7 @@
   </action>
   <action name="action_grayscale_distribution_histogram">
    <property name="text">
-    <string> grayscale distribution histogram</string>
+    <string> Grayscale distribution histogram</string>
    </property>
    <property name="font">
     <font>
@@ -200,7 +213,7 @@
   </action>
   <action name="actionRgb_distribution_histogram">
    <property name="text">
-    <string> rgb distribution histogram</string>
+    <string> Rgb distribution histogram</string>
    </property>
    <property name="font">
     <font>
@@ -256,6 +269,17 @@
   <action name="actionGray_scale_linear_transformation">
    <property name="text">
     <string>Gray scale linear transformation</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+     <italic>true</italic>
+    </font>
+   </property>
+  </action>
+  <action name="actionObject_detection_demo">
+   <property name="text">
+    <string>Object detection(demo)</string>
    </property>
    <property name="font">
     <font>

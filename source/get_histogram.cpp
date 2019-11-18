@@ -1,5 +1,4 @@
 #include<mainwindow.h>
-#include<ui_mainwindow.h>
 extern Mat image,image_changed;
 void MainWindow::get_historgam(bool flag){
     if(image.empty()){
@@ -51,4 +50,5 @@ void MainWindow::get_historgam(bool flag){
         imshow("historgam",histImage);
     }
     remind_save();
+    return;
 }

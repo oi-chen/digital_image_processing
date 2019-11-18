@@ -32,4 +32,5 @@ void MainWindow::OpenImg(){
     label->resize(QSize(img.width(),img.height()));
     ui->scrollArea->setWidget(label);
     cv::cvtColor(image,image,COLOR_RGB2BGR);
+    return;
 }

@@ -21,9 +21,11 @@ int doubleToInt(double d){//转类型时修正，避免两个控件偏差
 //拖动条与输入框同步
 void Dialog::on_doubleSpinBox2_valueChanged(double arg1){
     ui->horizontalSlider2->setValue(doubleToInt((ui->doubleSpinBox2->value())*100));
+    return;
 }
 void Dialog::on_horizontalSlider2_valueChanged(int value){
     ui->doubleSpinBox2->setValue((double)(ui->horizontalSlider2->value())/100);
+    return;
 }
 //用此写法也可，但拖动条只能拖动至整数，做不到无级拖动
 /*

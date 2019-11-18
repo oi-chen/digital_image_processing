@@ -11,4 +11,5 @@ void MainWindow::getrgbclicked(int x,int y){
     string str="R:"+to_string((int)color(2))+" G:"+to_string((int)color(1))+" B:"+to_string((int)color(0));
     QString rgb=QString::fromStdString(str);
     QMessageBox::information(this,tr("Pixel Information"),rgb);
+    return;
 }

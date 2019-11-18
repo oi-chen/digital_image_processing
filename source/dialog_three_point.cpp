@@ -5,7 +5,7 @@ Dialog_three_point::Dialog_three_point(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog_three_point){
     ui->setupUi(this);
-    QRegExp rx("1|([0-0]{1}[\.][0-9]{1,4})");//对所有输入框限制输入范围[0,1]内的4位及以下小数
+    QRegExp rx("1|([0-0]{1}[\\.][0-9]{1,4})");//对所有输入框限制输入范围[0,1]内的4位及以下小数
     QRegExpValidator *limit=new QRegExpValidator(rx,this);
     ui->lineEdit->setText("0");
     ui->lineEdit_2->setText("0");

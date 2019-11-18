@@ -121,8 +121,8 @@
     </font>
    </property>
    <property name="text">
-    <string>Notes:If you do not fill in the value,you
-will get the rgb value of the coorindate(0,0)</string>
+    <string>Notes: If you do not fill in the value, you
+will get the rgb value of the coorindate(0,0).</string>
    </property>
   </widget>
  </widget>

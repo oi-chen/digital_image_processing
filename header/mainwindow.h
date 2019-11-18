@@ -40,7 +40,8 @@ private slots:
     void image_smooth();
     void gray_line_trans();
     void on_actionGray_scale_linear_transformation_triggered();
-
+    void on_actionObject_detection_demo_triggered();
+    void image_identify_demo();
 private:
     void remind_save();
     void mirror_flip();
