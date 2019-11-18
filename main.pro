@@ -22,7 +22,7 @@ SOURCES+=\
     source/get_histogram.cpp\
     source/dialog_three_point.cpp\
     source/dialog_ang_and_sca.cpp\
-    source/dialog_smooth.cpp\./
+    source/dialog_smooth.cpp\
     source/affine_transformation.cpp\
     source/image_enhancement.cpp\
     source/dialog_gray_line_trans.cpp\
